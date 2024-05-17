@@ -28,3 +28,17 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+td {
+    width: 60px;
+    height: 60px;
+    border: 1px solid #000;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+}

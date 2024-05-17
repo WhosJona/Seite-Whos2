@@ -1,4 +1,4 @@
-const whitelist = ["Benutzer1", "Benutzer2", "Benutzer3"];
+const whitelist = ["Jojo", "Gast1", "Gast2"];
 
 function checkWhitelist() {
     const username = document.getElementById('username').value;
@@ -81,11 +81,16 @@ function startGuessNumber(container) {
         <input type="number" id="guess-input" min="1" max="100">
         <button onclick="makeGuess()">Raten</button>
         <p id="guess-message"></p>
+        <p>Versuche: <span id="attempts-count">0</span></p>
     `;
     const randomNumber = Math.floor(Math.random() * 100) + 1;
+    let attempts = 0;
     window.makeGuess = function () {
         const guess = parseInt(document.getElementById('guess-input').value);
         const message = document.getElementById('guess-message');
+        const attemptsCount = document.getElementById('attempts-count');
+        attempts++;
+        attemptsCount.textContent = attempts;
         if (guess === randomNumber) {
             message.textContent = 'Herzlichen Glückwunsch! Du hast die Zahl erraten!';
             message.style.color = 'green';

@@ -34,15 +34,18 @@ function startTicTacToe(container) {
             <tr><td></td><td></td><td></td></tr>
         </table>
         <p id="tic-tac-toe-message"></p>
+        <button onclick="resetTicTacToe()">Neues Spiel</button>
     `;
     const cells = container.querySelectorAll('td');
     let currentPlayer = 'X';
     cells.forEach(cell => {
         cell.addEventListener('click', function () {
-            if (cell.textContent === '') {
+            if (cell.textContent === '' && !checkWinner()) {
                 cell.textContent = currentPlayer;
                 if (checkWinner()) {
                     document.getElementById('tic-tac-toe-message').textContent = `Spieler ${currentPlayer} gewinnt!`;
+                } else if (Array.from(cells).every(cell => cell.textContent !== '')) {
+                    document.getElementById('tic-tac-toe-message').textContent = 'Unentschieden!';
                 } else {
                     currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
                 }
@@ -58,7 +61,17 @@ function checkWinner() {
         [0, 3, 6], [1, 4, 7], [2, 5, 8],
         [0, 4, 8], [2, 4, 6]
     ];
-    return winningCombos.some(combo => combo.every(index => board[index] !== '' && board[index] === board[combo[0]]));
+    return winningCombos.some(combo => 
+        board[combo[0]] !== '' && 
+        board[combo[0]] === board[combo[1]] && 
+        board[combo[0]] === board[combo[2]]
+    );
+}
+
+function resetTicTacToe() {
+    document.getElementById('tic-tac-toe-message').textContent = '';
+    const cells = document.querySelectorAll('#tic-tac-toe-board td');
+    cells.forEach(cell => cell.textContent = '');
 }
 
 function startGuessNumber(container) {

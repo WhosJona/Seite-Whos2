@@ -1,44 +1,90 @@
+/* Hintergrund und Text */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    text-align: center;
     margin: 0;
-    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-#whitelist-section, #games-section {
-    background-color: #fff;
+/* Profilkarte */
+.profile-card {
+    text-align: center;
+    background-color: #1e1e1e;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: 20px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    max-width: 300px;
+    width: 100%;
+}
+
+.profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #4CAF50;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 10px 0;
+    color: #4CAF50;
+}
+
+.bio {
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* Soziale Buttons */
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.group {
+    position: relative;
 }
 
 button {
-    padding: 10px 20px;
-    margin: 10px;
+    background: none;
     border: none;
-    background-color: #007BFF;
+    cursor: pointer;
     color: white;
-    cursor: pointer;
-    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
-button:hover {
-    background-color: #0056b3;
+button:hover svg {
+    stroke: #4CAF50;
 }
 
-table {
-    margin: 0 auto;
-    border-collapse: collapse;
+.tooltip {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
 }
 
-td {
-    width: 60px;
-    height: 60px;
-    border: 1px solid #000;
-    font-size: 24px;
-    text-align: center;
-    cursor: pointer;
+.group:hover .tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-10px);
 }
